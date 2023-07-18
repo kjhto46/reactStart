@@ -1,11 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
-</head>
-<body>
-   
-</body>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"
+  ></script>
+  <script>
+    const root = document.getElementById("root");
+    // 지금 작업하는 방식은 다른사람들이 사용하지 않는 방식임.
+    //React JS로 element를 생성하는 기본을 설명하기 위해 html에서 작업중.
+    const h3 = React.createElement("h3", {
+      onMouseEnter: () => console.log('마우스 올림.'),
+    }, "Hello I'm h3"); // script src=""로 React를 import해왔기에  createElement function을 가진 리액트 object에 접근 가능
+    // ! property는 class name, id도 가능 style도 가능
+    // !! 참고만 하고 외우지 말기. 이렇게 쓸 일 없음
+
+    const btn = React.createElement(
+      "button",
+      {
+        onClick: () => console.log("클릭됐어요"),
+      },
+      "click me"
+    );
+    const container = React.createElement("div", null, [h3, btn]);
+    // ! const h3 그러나 createElement(“h3”) 은 반드시 생성하고자 하는 HTML 태그와 똑같아야함
+
+    ReactDOM.render(container, root);
+    // React JS - 어플리케이션이 아주 인터랙티브하도록 만들어주는 library. 엔진과 같다.
+    // React-dom - library 또는 package. 모든 react element들을 HTML body에 둘 수 있도록 해줌.
+    // ReactDOM.render() - render의 의미는 react element를 가지고 HTML로 만들어 배치한다는 것. 즉, 사용자에게 보여준다는 의미
+
+    // !!! 이렇게 복잡하게 작업을 한 이유는 'React Js'는 '바닐라JS'와 반대로 실행하고 있다는 뜻
+    // !!! 바닐라JS는 HTML -> JS 순서
+    // !!! 리액트는 JS -> HTML 순서
+    // !!! 'JS가 element를 생성하고 React JS가 그것을 HTML로 번역하는 것! React JS는 업데이트 해야 하는 HTML을 업데이트 할 수 있음'
+  </script>
 </html>
