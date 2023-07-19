@@ -8,14 +8,18 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     const root = document.getElementById("root");
-    function App(){
-    return(
-      <div>
-        <h3>Total clicks: 0</h3>
-        <button>click me</button>
-      </div>
+    function App() {
+      const [counter, modifier] = React.useState(0); //counter 숫자, modifier 값을 수정해줄것이기 때문에
+      const onClick = () => {
+        modifier();
+      }
+      return (
+        <div>
+          <h3>Total clicks: {counter}</h3>
+          <button onClick={onClick}>click me</button>
+        </div>
       );
-    };
+    }
     ReactDOM.render(<App />, root);
   </script>
 </html>
