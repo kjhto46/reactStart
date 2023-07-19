@@ -11,7 +11,7 @@
     function App() {
       const [counter, setCounter] = React.useState(0); //counter 숫자, setCounter 값을 수정해줄 함수
       const onClick = () => {
-        setCounter(counter + 1);
+        setCounter((current) => current + 1);
       }
       return (
         <div>
