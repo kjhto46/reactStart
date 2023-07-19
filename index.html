@@ -9,9 +9,9 @@
   <script type="text/babel">
     const root = document.getElementById("root");
     function App() {
-      const [counter, modifier] = React.useState(0); //counter 숫자, modifier 값을 수정해줄것이기 때문에
+      const [counter, setCounter] = React.useState(0); //counter 숫자, setCounter 값을 수정해줄 함수
       const onClick = () => {
-        modifier();
+        setCounter(counter + 1);
       }
       return (
         <div>
