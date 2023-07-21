@@ -7,110 +7,19 @@
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
-    const root = document.getElementById("root");
-    function MinutesToHours() {
-      const [amount, setAmount] = React.useState();
-      const [flipped, setFlipped] = React.useState(false);
-      const onChange = (event) => {
-        setAmount(event.target.value);
-      };
-
-      const reset = () => setAmount(0);
-      const onFlip = () => {
-        reset();
-        setFlipped((current) => !current);
-      };
-      return (
-        <div>
-          <h3>분과 시간 변환기</h3>
-          <div>
-            <label htmlFor="minutes">분</label>
-            <input
-              value={flipped ? amount * 60 : amount}
-              id="minutes"
-              placeholder="분"
-              type="number"
-              onChange={onChange}
-              disabled={flipped === true}
-            />
-          </div>
-          <div>
-            <label htmlFor="hours">시간</label>
-            <input
-              value={flipped ? amount : Math.round(amount / 60)}
-              id="hours"
-              placeholder="시간"
-              type="number"
-              disabled={flipped === false}
-              onChange={onChange}
-            />
-          </div>
-          <button onClick={reset}>Reset</button>
-          <button onClick={onFlip}>뒤집기</button>
-        </div>
-      );
+    function Btn(props) {
+      console.log(props)
+      return <button style={{ color: props.color }}>{props.name}</button>;
     }
-    function KmToMiles() {
-      const [amount, setAmount] = React.useState();
-      const [flipped, setFlipped] = React.useState(false);
-      const onChange = (event) => {
-        setAmount(event.target.value);
-      };
-
-      const reset = () => setAmount(0);
-      const onFlip = () => {
-        reset();
-        setFlipped((current) => !current);
-      };
-      return (
-        <div>
-          <h3>킬로미터와 마일 변환기</h3>
-          <div>
-            <label htmlFor="miles">마일</label>
-            <input
-              value={flipped ? (amount / 1.60934)   : amount}
-              id="miles"
-              placeholder="마일"
-              type="number"
-              onChange={onChange}
-              disabled={flipped === true}
-            />
-          </div>
-          <div>
-            <label htmlFor="kilometer">킬로미터</label>
-            <input
-              value={flipped ? amount : amount * 1.60934}
-              id="kilometer"
-              placeholder="킬로미터"
-              type="number"
-              disabled={flipped === false}
-              onChange={onChange}
-            />
-          </div>
-          <button onClick={reset}>Reset</button>
-          <button onClick={onFlip}>뒤집기</button>
-        </div>
-      );
-    }
-
     function App() {
-      const [index, setIndex] = React.useState('');
-      const onSelect = (event) => {
-        setIndex(event.target.value)
-      }
       return (
         <div>
-          <h1>Super Converter</h1>
-          <select value={index} onChange={onSelect}>
-            <option value="">옵션을 선택해주세요</option>
-            <option value="0">분과 시간</option>
-            <option value="1">킬로미터와 마일</option>
-          </select>
-          {index === '0' ? <MinutesToHours /> : null}
-          {index === '1' ? <KmToMiles /> : null}
+          <Btn name="취소" color="red" />
+          <Btn name="확인" color="blue" />
         </div>
       );
     }
+    const root = document.getElementById("root");
     ReactDOM.render(<App />, root);
   </script>
 </html>
