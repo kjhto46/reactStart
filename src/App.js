@@ -17,7 +17,12 @@ function App() {
 
   return (
     <div>
-      <input onChange={onChange} type="text" placeholder="Search here..." />
+      <input
+        onChange={onChange}
+        value={keyword}
+        type="text"
+        placeholder="Search here..."
+      />
       <h1>{counter}</h1>
       <button onClick={onClick}>클릭하기</button>
     </div>
